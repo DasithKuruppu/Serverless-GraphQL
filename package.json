@@ -1,16 +1,28 @@
 {
   "name": "serverless-graphql-template",
   "version": "1.0.0",
-  "description": "",
+  "author": {
+    "name": "Dasith kuruppu",
+    "email": "dasithkuruppu@gmail.com",
+    "url": "https://github.com/DasithKuruppu"
+  },
+  "description": "initial boilerplate / for serverless faas / lambda with dynamodb and graphql",
+  "keywords": [
+    "FaaS",
+    "nodejs",
+    "dynamodb",
+    "lambda",
+    "serverless",
+    "graphql",
+    "elasticsearch"
+  ],
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-offline": "serverless offline start",
+    "start": "serverless offline start",
     "compile-debug": "serverless webpack --out dist",
     "deploy": "serverless deploy"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.361.0",

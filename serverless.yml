@@ -19,7 +19,7 @@ provider:
             - Ref: ProductsGqlDynamoDbTable
 functions:
   queryProducts:
-    handler: handler.queryProducts
+    handler: handler.queryEvents
     events:
       - http:
           path: products

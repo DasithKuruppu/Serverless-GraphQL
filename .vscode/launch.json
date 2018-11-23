@@ -22,44 +22,6 @@
       "windows": {
         "program": "${workspaceRoot}\\node_modules\\serverless\\bin\\serverless"
       }
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Invoke Local - first function",
-      "program": "${workspaceRoot}/node_modules/serverless/bin/serverless",
-      "args": ["invoke", "local", "-f", "first", "--data", "{}"],
-      "sourceMaps": true,
-      "runtimeArgs": ["--lazy"],
-      "outFiles": ["${workspaceFolder}/.webpack/**/*.js"],
-      "protocol": "inspector",
-      "runtimeExecutable": "node",
-      "env": {
-        // Here we set some environment vars that should be set locally.
-        // They can and will overwrite the ones coming from your serverless.yml
-      },
-      "windows": {
-        "program": "${workspaceRoot}\\node_modules\\serverless\\bin\\serverless"
-      }
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Invoke Local - second function",
-      "program": "${workspaceRoot}/node_modules/serverless/bin/serverless",
-      "args": ["invoke", "local", "-f", "second", "--data", "{}"],
-      "sourceMaps": true,
-      "runtimeArgs": ["--lazy"],
-      "outFiles": ["${workspaceFolder}/.webpack/**/*.js"],
-      "protocol": "inspector",
-      "runtimeExecutable": "node",
-      "env": {
-        // Here we set some environment vars that should be set locally.
-        // They can and will overwrite the ones coming from your serverless.yml
-      },
-      "windows": {
-        "program": "${workspaceRoot}\\node_modules\\serverless\\bin\\serverless"
-      }
     }
   ]
 }

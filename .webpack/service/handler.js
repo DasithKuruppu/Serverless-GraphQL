@@ -91,25 +91,25 @@ module.exports =
 /*!********************!*\
   !*** ./handler.js ***!
   \********************/
-/*! exports provided: queryProducts */
+/*! exports provided: queryEvents */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "queryProducts", function() { return queryProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "queryEvents", function() { return queryEvents; });
 /* harmony import */ var _schemas_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./schemas/index */ "./schemas/index.js");
 /* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! graphql */ "graphql");
 /* harmony import */ var graphql__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(graphql__WEBPACK_IMPORTED_MODULE_1__);
 
+ // Highly scalable FaaS architecture :)
+// Export a function which would be hooked up to the the λ node/ nodes as specified on serverless.yml template 
 
-function queryProducts(event, context, callback) {
-  console.log(event, context);
+function queryEvents(event, context, callback) {
   Object(graphql__WEBPACK_IMPORTED_MODULE_1__["graphql"])(_schemas_index__WEBPACK_IMPORTED_MODULE_0__["default"], event.body).then(result => callback(null, {
     statusCode: 200,
     body: JSON.stringify(result)
   })).catch(callback);
 }
-;
 
 /***/ }),
 
