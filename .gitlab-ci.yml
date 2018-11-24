@@ -9,6 +9,7 @@ npmInstallGlobals:
   stage: install
   script: 
     - npm install -g serverless
+    - npm install -g standard
 npmInstall:
     stage: install
     script:
@@ -22,8 +23,7 @@ linting:
     stage: test
     script:
         # install standardjs for linting
-        - npm install -g standard
-        - npm run-script lint
+        - standard
 
 deploytodevaws:
     stage: deploy
