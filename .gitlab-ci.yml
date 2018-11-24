@@ -12,7 +12,7 @@ build:
   script: echo "Building the app"
 
 deploy_staging:
-  stage: dev
+  stage: deploy
   script:
     - stackery deploy --stack-name "dev-ops-serverless" --env-name "dev" --git-ref "$CI_COMMIT_SHA"
   environment:
