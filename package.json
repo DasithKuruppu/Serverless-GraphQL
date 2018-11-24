@@ -6,7 +6,7 @@
     "email": "dasithkuruppu@gmail.com",
     "url": "https://github.com/DasithKuruppu"
   },
-  "description": "initial boilerplate / for serverless faas / lambda with dynamodb and graphql",
+  "description": "initial boilerplate for serverless lambda with dynamodb and graphql - events booking app",
   "keywords": [
     "FaaS",
     "nodejs",
