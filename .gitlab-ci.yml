@@ -1,4 +1,4 @@
-image: node:8.10
+image: node:latest
 
 stages:
     - install # install all npm dependencies
@@ -41,5 +41,4 @@ deploytodevaws:
     script:
         # install dev-dependency mocha
         - npm install
-        - npm test
         - npm run deploy-dev
