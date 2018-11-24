@@ -9,7 +9,6 @@ npmInstallGlobals:
   stage: install
   script: 
     - npm install -g serverless
-    -
 npmInstall:
     stage: install
     script:
