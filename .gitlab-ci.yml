@@ -1,4 +1,4 @@
-image: node:6.10
+image: node:8.10
 
 stages:
     - install # install all npm dependencies
