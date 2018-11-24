@@ -14,7 +14,6 @@ npmInstallGlobals:
   stage: install
   script: 
     - npm install -g serverless
-    - npm install -g standard
   artifacts:
       untracked: true
     
@@ -31,7 +30,7 @@ linting:
     stage: test
     script:
         # install standardjs for linting
-        - standard
+        - npm run lintCheck
 
 deploytodevaws:
     stage: deploy
