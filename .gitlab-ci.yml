@@ -1,15 +1,23 @@
-image: node:6.10
+image: node:8.10
 
 stages:
     - install # install all npm dependencies
     - test    # execute unit tests
     - deploy # deploy to aws
 
+cache:
+  paths:
+    - node_modules/
+
+
 npmInstallGlobals:
   stage: install
   script: 
     - npm install -g serverless
-    -
+    - npm install -g standard
+  artifacts:
+      untracked: true
+    
 npmInstall:
     stage: install
     script:
@@ -17,14 +25,13 @@ npmInstall:
     # artifacts describe the result of the stage
     # that can be used in consecutive stages
     artifacts:
-        untracked: true
+      untracked: true
 
 linting:
     stage: test
     script:
         # install standardjs for linting
-        - npm install -g standard
-        - npm run-script lint
+        - standard
 
 deploytodevaws:
     stage: deploy
