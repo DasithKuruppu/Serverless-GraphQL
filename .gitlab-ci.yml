@@ -1,21 +1,39 @@
+image: node:6.10
+
 stages:
-  - test
-  - build
-  - deploy
+    - install # install all npm dependencies
+    - test    # execute unit tests
+    - deploy # deploy to aws
 
-test:
-  stage: test
-  script: echo "Running tests"
+npmInstallGlobals:
+  stage: install
+  script: 
+    - npm install -g serverless
+    -
+npmInstall:
+    stage: install
+    script:
+        - npm install
+    # artifacts describe the result of the stage
+    # that can be used in consecutive stages
+    artifacts:
+        untracked: true
 
-build:
-  stage: build
-  script: echo "Building the app"
+linting:
+    stage: test
+    script:
+        # install standardjs for linting
+        - npm install -g standard
+        - npm run-script lint
 
-deploy_staging:
-  stage: deploy
-  script:
-    - stackery deploy --stack-name "dev-ops-serverless" --env-name "dev" --git-ref "$CI_COMMIT_SHA"
-  environment:
-    name: dev
-  only:
-  - master
+deploytodevaws:
+    stage: deploy
+    # use the artifcats of the 'npmInstall' job
+    dependencies:
+        - npmInstallGlobals
+        - npmInstall
+    script:
+        # install dev-dependency mocha
+        - npm install
+        - npm test
+        - npm run deploy-dev
