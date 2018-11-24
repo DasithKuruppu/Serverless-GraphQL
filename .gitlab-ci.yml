@@ -1,0 +1,21 @@
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script: echo "Running tests"
+
+build:
+  stage: build
+  script: echo "Building the app"
+
+deploy_staging:
+  stage: deploy
+  script:
+    - stackery deploy --stack-name "dev-ops-serverless" --env-name "dev" --git-ref "$CI_COMMIT_SHA"
+  environment:
+    name: dev
+  only:
+  - master

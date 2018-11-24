@@ -21,7 +21,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "serverless offline start",
     "compile-debug": "serverless webpack --out dist",
-    "deploy": "serverless deploy"
+    "deploy-dev": "serverless deploy --stage=dev",
+    "deploy-test": "serverless deploy --stage=test",
+    "deploy-prod": "serverless deploy --stage=prod"
   },
   "license": "ISC",
   "dependencies": {
