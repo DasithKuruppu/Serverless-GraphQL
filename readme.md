@@ -7,6 +7,9 @@
 5. contributing guidelines ?
 6. finally CI/CD environments (dev,test,production) if possible(more costly due to repetition of resorces for each enviornment).
 
+## WIKI
+
+1. [Check Wiki](https://gitlab.com/DasithKuruppu/serverlesseventsbe/wikis/Introduction) for more info
 
 ## getting started
 1. npm install
