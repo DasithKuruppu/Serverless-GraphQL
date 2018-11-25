@@ -39,6 +39,5 @@ deploytodevaws:
         - npmInstallGlobals
         - npmInstall
     script:
-        # install dev-dependency mocha
-        - npm install
+        - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
         - npm run deploy-dev
