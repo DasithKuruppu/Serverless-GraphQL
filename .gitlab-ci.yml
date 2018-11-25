@@ -8,15 +8,7 @@ stages:
 cache:
   paths:
     - node_modules/
-
-
-npmInstallGlobals:
-  stage: install
-  script: 
-    - npm install -g serverless
-  artifacts:
-      untracked: true
-    
+  
 npmInstall:
     stage: install
     script:
@@ -36,8 +28,8 @@ deploytodevaws:
     stage: deploy
     # use the artifcats of the 'npmInstall' job
     dependencies:
-        - npmInstallGlobals
         - npmInstall
     script:
+        - npm install -g serverless
         - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
         - npm run deploy-dev
