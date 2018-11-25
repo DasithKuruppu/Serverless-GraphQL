@@ -11,6 +11,12 @@
 
 1. [Check Wiki](https://gitlab.com/DasithKuruppu/serverlesseventsbe/wikis/Introduction) for more info
 
+## Prerequisites
+1. npm install -g serverless
+2. serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
+
+Here the $AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY are environment variables, These keys need to be present to access aws services I will create seperate users on aws and then give you seperate keys
+
 ## getting started
 1. npm install
 2. for now just run npm start
