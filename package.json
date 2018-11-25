@@ -22,9 +22,9 @@
     "lintCheck": "./node_modules/.bin/eslint handler.js",
     "start": "serverless offline start",
     "compile-debug": "serverless webpack --out dist",
-    "deploy-dev": "serverless deploy --stage=default",
-    "deploy-test": "serverless deploy --stage=test",
-    "deploy-prod": "serverless deploy --stage=prod"
+    "deploy-dev": "serverless deploy -v --stage=default",
+    "deploy-test": "serverless deploy -v --stage=test",
+    "deploy-prod": "serverless deploy -v --stage=prod"
   },
   "license": "ISC",
   "dependencies": {
