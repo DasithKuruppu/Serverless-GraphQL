@@ -5,7 +5,7 @@ const nodeExternals = require("webpack-node-externals");
 module.exports = {
   entry: slsw.lib.entries,
   target: "node",
-  mode: slsw.lib.webpack.isLocal ? "development": "production",
+  mode: slsw.lib.webpack.isLocal ? "development" : "production",
   optimization: {
     // We no want to minimize our code.
     minimize: false
@@ -23,9 +23,15 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader"
+            loader: "babel-loader",
+            options: {
+              presets: [
+                "@babel/preset-flow",
+                "@babel/preset-env"
+                ]
+            }
           }
-        ],
+        ]
       }
     ]
   },
