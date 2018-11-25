@@ -1,4 +1,4 @@
-image: node:8.10
+image: node:latest
 
 stages:
     - install # install all npm dependencies
@@ -8,16 +8,7 @@ stages:
 cache:
   paths:
     - node_modules/
-
-
-npmInstallGlobals:
-  stage: install
-  script: 
-    - npm install -g serverless
-    - npm install -g standard
-  artifacts:
-      untracked: true
-    
+  
 npmInstall:
     stage: install
     script:
@@ -31,16 +22,14 @@ linting:
     stage: test
     script:
         # install standardjs for linting
-        - standard
+        - npm run lintCheck
 
 deploytodevaws:
     stage: deploy
     # use the artifcats of the 'npmInstall' job
     dependencies:
-        - npmInstallGlobals
         - npmInstall
     script:
-        # install dev-dependency mocha
-        - npm install
-        - npm test
+        - npm install -g serverless
+        - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
         - npm run deploy-dev

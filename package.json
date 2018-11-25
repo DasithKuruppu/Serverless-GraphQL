@@ -19,9 +19,10 @@
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lintCheck": "./node_modules/.bin/eslint handler.js",
     "start": "serverless offline start",
     "compile-debug": "serverless webpack --out dist",
-    "deploy-dev": "serverless deploy --stage=dev",
+    "deploy-dev": "serverless deploy --stage=default",
     "deploy-test": "serverless deploy --stage=test",
     "deploy-prod": "serverless deploy --stage=prod"
   },
