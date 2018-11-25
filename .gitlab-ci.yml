@@ -22,7 +22,9 @@ linting:
     stage: test
     script:
         # install standardjs for linting
-        - npm run lintCheck
+        - npm run flow init
+        - npm run flow
+
 
 deploytodevaws:
     stage: deploy

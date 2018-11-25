@@ -1,0 +1,15 @@
+[ignore]
+/node_modules
+/.serverless
+
+[include]
+
+[libs]
+
+[lints]
+all=warn
+untyped-type-import=error
+sketchy-null-bool=off
+[options]
+
+[strict]
