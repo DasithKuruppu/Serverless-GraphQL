@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "allowJs": true,
+    "allowUnreachableCode": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true
+  },
+  "files": [
+    "./handler.ts",
+  ],
+  "include": ["./*.ts","./**/*.ts"],
+  "exclude": ["node_modules"]
+}
