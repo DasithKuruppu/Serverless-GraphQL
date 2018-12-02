@@ -1,7 +1,7 @@
 image: node:latest
 
 stages:
-    - install # install all npm dependencies
+    - build # install all npm dependencies
     - test    # execute unit tests
     - deploy # deploy to aws
 
@@ -10,7 +10,7 @@ cache:
     - node_modules/
   
 npmInstall:
-    stage: install
+    stage: build
     script:
         - npm install
     # artifacts describe the result of the stage
@@ -22,7 +22,7 @@ linting:
     stage: test
     script:
         # install standardjs for linting
-        - npm run flow
+        - npm run tslint
 
 
 deploytodevaws:
