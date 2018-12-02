@@ -14,26 +14,24 @@ module.exports = {
     // Turn off size warnings for entry points
     hints: false
   },
-  devtool: "nosources-source-map",
+  devtool: 'inline-source-map',
   externals: [nodeExternals()],
   module: {
     rules: [
+       {
+        test: /\.ts?$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: [
-                "@babel/preset-flow",
-                "@babel/preset-env"
-                ]
-            }
-          }
-        ]
-      }
+        use: ["source-map-loader"],
+        enforce: "pre"
+      },
     ]
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
     libraryTarget: "commonjs2",
