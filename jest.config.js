@@ -3,6 +3,7 @@ module.exports = {
   testEnvironment: 'node',
   collectCoverageFrom: [
     "**/*.ts",
+    "!**/__tests__**",
     "!**/node_modules/**",
     "!**/.webpack/**"
   ],
@@ -13,5 +14,7 @@ module.exports = {
         warnOnly: true
       }
     }
-  }
+  },
+  testMatch: null,
+  preset: "ts-jest"
 };
