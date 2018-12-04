@@ -14,6 +14,7 @@
       "severity": "warning",
       "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
     },
+    "no-unused-variable": {"severity": "warning"},
     "object-literal-sort-keys": false,
     "ordered-imports": false
   },

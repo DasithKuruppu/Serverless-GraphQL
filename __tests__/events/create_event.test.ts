@@ -1,6 +1,6 @@
 import { createParams } from "../../resolvers/events/create";
 import * as uuidv4 from "uuid/v4";
-test("Test Create", () => {
+test("Event object creation", () => {
   const createdParams = createParams(
     {
       id: "1",
