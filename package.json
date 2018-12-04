@@ -18,13 +18,15 @@
   ],
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "serverless invoke test --stage default -f queryEvents",
     "start": "serverless offline start",
     "compile-debug": "serverless webpack --out dist",
     "deploy-dev": "serverless deploy -v --stage=default",
     "deploy-test": "serverless deploy -v --stage=test",
     "deploy-prod": "serverless deploy -v --stage=prod",
-    "tslint": "tslint --project tsconfig.json --config tslint.json"
+    "tslint": "tslint --project tsconfig.json --config tslint.json",
+    "compile-tests": "webpack --config configs/test.webpack.config.js",
+    "unit-tests":"jest --config jest.config.js --verbose --coverage"
   },
   "license": "ISC",
   "dependencies": {
@@ -41,15 +43,20 @@
     "@babel/preset-typescript": "^7.1.0",
     "@types/aws-lambda": "^8.10.15",
     "@types/graphql": "^14.0.3",
+    "@types/jest": "^23.3.10",
     "@types/node": "^10.12.11",
     "babel-loader": "^8.0.4",
+    "jest": "^23.6.0",
+    "serverless-jest-plugin": "^0.2.1",
     "serverless-offline": "^3.31.3",
     "serverless-webpack": "^5.2.0",
     "source-map-loader": "^0.2.4",
+    "ts-jest": "^23.10.5",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.2.1",
     "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
     "webpack-node-externals": "^1.7.2"
   }
 }

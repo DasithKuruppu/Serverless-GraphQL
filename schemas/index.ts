@@ -1,6 +1,4 @@
-/* @flow */
-/*
-import {
+/*import {
   paginationToParams,
   dataToConnection
 } from "graphql-dynamodb-connections";
