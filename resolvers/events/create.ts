@@ -1,4 +1,3 @@
-/* @flow */
 import { DynamoDB } from "aws-sdk";
 import { IEvent } from "./typings";
 const dynamoDb = new DynamoDB.DocumentClient();

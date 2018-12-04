@@ -15,6 +15,4 @@ module.exports = {
       }
     }
   },
-  testMatch: null,
-  preset: "ts-jest"
 };
