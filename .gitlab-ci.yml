@@ -32,7 +32,7 @@ Deploy_To_AWS:
     stage: deploy
     # use the artifcats of the 'npmInstall' job
     dependencies:
-        - npmInstall
+        - npm_Install
     script:
         - npm install -g serverless
         - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
