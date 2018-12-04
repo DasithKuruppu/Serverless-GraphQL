@@ -9,7 +9,7 @@ cache:
   paths:
     - node_modules/
   
-npmInstall:
+npm_Install:
     stage: build
     script:
         - npm install
@@ -18,18 +18,21 @@ npmInstall:
     artifacts:
       untracked: true
 
-linting:
+linter_code_check:
     stage: test
     script:
         # install standardjs for linting
         - npm run tslint
+Jest_Unit_Tests:
+    stage: test
+    script:
+        - npm run unit-tests
 
-
-deploytodevaws:
+Deploy_To_AWS:
     stage: deploy
     # use the artifcats of the 'npmInstall' job
     dependencies:
-        - npmInstall
+        - npm_Install
     script:
         - npm install -g serverless
         - serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
