@@ -18,13 +18,15 @@
   ],
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lintCheck": "./node_modules/.bin/eslint handler.js",
+    "test-lambda": "serverless invoke test --stage default -f queryEvents",
     "start": "serverless offline start",
     "compile-debug": "serverless webpack --out dist",
-    "deploy-dev": "serverless deploy --stage=default",
-    "deploy-test": "serverless deploy --stage=test",
-    "deploy-prod": "serverless deploy --stage=prod"
+    "deploy-dev": "serverless deploy -v --stage=default",
+    "deploy-test": "serverless deploy -v --stage=test",
+    "deploy-prod": "serverless deploy -v --stage=prod",
+    "tslint": "tslint --project tsconfig.json --config tslint.json",
+    "compile-tests": "webpack --config configs/test.webpack.config.js",
+    "unit-tests": "jest --config jest.config.js --verbose --coverage"
   },
   "license": "ISC",
   "dependencies": {
@@ -32,16 +34,29 @@
     "graphql": "^14.0.2",
     "graphql-dynamodb-connections": "^1.0.2",
     "serverless": "^1.33.2",
-    "uuid": "^3.3.2",
-    "webpack-node-externals": "^1.7.2"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/aws-lambda": "^8.10.15",
+    "@types/graphql": "^14.0.3",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.11",
     "babel-loader": "^8.0.4",
-    "eslint": "^5.9.0",
+    "jest": "^23.6.0",
+    "serverless-jest-plugin": "^0.2.1",
     "serverless-offline": "^3.31.3",
     "serverless-webpack": "^5.2.0",
-    "webpack": "^4.26.0"
+    "source-map-loader": "^0.2.4",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.2.1",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }
