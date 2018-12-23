@@ -20,5 +20,9 @@ export default (data: IEvent) => {
   return dynamoDb
     .put(putParams)
     .promise()
-    .then(() => putParams.Item);
+    .then(() => {
+      return putParams.Item;
+    }).catch((err) => {
+      throw err;
+    });
 };
