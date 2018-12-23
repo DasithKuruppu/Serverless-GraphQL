@@ -1,25 +1,24 @@
-/* @flow */
-
 import schema from "./schemas/index";
 import { graphql } from "graphql";
-import { APIGatewayProxyEvent, Context, ProxyCallback } from "aws-lambda";
-// Highly scalable FaaS architecture :)=
+import { APIGatewayProxyEvent, Context } from "aws-lambda";
+// Highly scalable FaaS architecture :)
 // Export a function which would be hooked up to the the λ node/ nodes as specified on serverless.yml template
 export async function queryEvents(
   event: APIGatewayProxyEvent,
-  context: Context,
-  callback: ProxyCallback,
-): Promise<void> {
+  // context: Context,
+) {
   const parsedRequestBody = (event && event.body) ? JSON.parse(event.body) : {};
+
   try {
-    const result = await graphql(schema,
+    const graphQLResult = await graphql(schema,
       parsedRequestBody.query,
       null,
       null,
       parsedRequestBody.variables,
       parsedRequestBody.operationName);
-    callback(null, { statusCode: 200, body: JSON.stringify(result) });
+
+    return { statusCode: 200, body: JSON.stringify(graphQLResult) };
   } catch (error) {
-    callback(error);
+    throw error;
   }
 }

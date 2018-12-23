@@ -1,3 +1,14 @@
 {
-  "presets": ["@babel/typescript", ["@babel/env", { "modules": false }]]
+  "presets": [
+    "@babel/typescript",
+    [
+      "@babel/env",
+      {
+        "modules": false,
+        "targets": {
+          "node": "8.10"
+        }
+      }
+    ]
+  ]
 }
