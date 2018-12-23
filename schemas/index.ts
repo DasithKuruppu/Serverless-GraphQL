@@ -7,12 +7,18 @@ import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
-  GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
   GraphQLBoolean,
 } from "graphql";
 
+import {
+  /*GraphQLDate,
+  GraphQLTime,*/
+  GraphQLDateTime,
+} from "graphql-iso-date";
+
+import { IEvent } from "../resolvers/events/typings";
 import addEvent from "../resolvers/events/create";
 import viewEvent from "../resolvers/events/view";
 import listEvents from "../resolvers/events/list";
@@ -23,8 +29,8 @@ const eventType = new GraphQLObjectType({
   fields: {
     id: { type: new GraphQLNonNull(GraphQLString) },
     name: { type: new GraphQLNonNull(GraphQLString) },
-    quantity: { type: new GraphQLNonNull(GraphQLInt) },
-    addedAt: { type: new GraphQLNonNull(GraphQLString) },
+    description: { type: new GraphQLNonNull(GraphQLString) },
+    addedAt: { type: new GraphQLNonNull(GraphQLDateTime) },
   },
 });
 
@@ -34,7 +40,7 @@ const schema = new GraphQLSchema({
     fields: {
       listEvents: {
         type: new GraphQLList(eventType),
-        resolve: (/*parent, args*/) => {
+        resolve: (parent, args) => {
           return listEvents();
         },
       },
@@ -43,7 +49,7 @@ const schema = new GraphQLSchema({
           id: { type: new GraphQLNonNull(GraphQLString) },
         },
         type: eventType,
-        resolve: (/*parent,*/ args: { id: string }) => {
+        resolve: (parent, args: { id: string }) => {
           return viewEvent(args.id);
         },
       },
@@ -56,10 +62,10 @@ const schema = new GraphQLSchema({
       createEvent: {
         args: {
           name: { type: new GraphQLNonNull(GraphQLString) },
-          quantity: { type: new GraphQLNonNull(GraphQLInt) },
+          description: { type: new GraphQLNonNull(GraphQLString) },
         },
         type: eventType,
-        resolve: (/*parent, */ args) => {
+        resolve: (parent, args: IEvent) => {
           return addEvent(args);
         },
       },
@@ -68,7 +74,7 @@ const schema = new GraphQLSchema({
           id: { type: new GraphQLNonNull(GraphQLString) },
         },
         type: GraphQLBoolean,
-        resolve: (/*parent,*/ args: { id: string }) => {
+        resolve: (parent, args: { id: string }) => {
           return removeEvent(args.id);
         },
       },

@@ -10,10 +10,13 @@ export function queryEvents(
   context: Context,
   callback: ProxyCallback,
 ): void {
-  graphql(schema, event.body)
+  const parsedRequestBody = JSON.parse(event.body);
+  graphql(schema, parsedRequestBody.query, null, null, parsedRequestBody.variables, parsedRequestBody.operationName)
     .then((result: ExecutionResult): void => {
         return callback(null, { statusCode: 200, body: JSON.stringify(result) });
       },
     )
-    .catch(callback);
+    .catch((err) => {
+      return callback(err);
+    });
 }
