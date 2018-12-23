@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "Events-Backend": {
+      "schemaPath": "schema.graphql",
+      "extensions": {
+        "endpoints": {
+          "dev": "https://a8noghdsdb.execute-api.us-east-1.amazonaws.com/default/events"
+        }
+      }
+    }
+  }
+}

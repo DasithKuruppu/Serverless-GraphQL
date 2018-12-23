@@ -25,5 +25,7 @@ are environment variables, These keys need to be present to access aws services 
 
 ## getting started
 1. npm install
-2. for now just run npm start
-3. npm deploy to deploy aws
+2. npm install -g graphql-cli   ``` optional ```
+3. install [GraphQL Playground](https://github.com/prisma/graphql-playground/releases)  ``` optional for easy querying ```
+4. for now just run npm start
+5. npm deploy to deploy aws
