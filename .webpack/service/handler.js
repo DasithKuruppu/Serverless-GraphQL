@@ -175,7 +175,11 @@ __webpack_require__.r(__webpack_exports__);
 const dynamoDb = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["DynamoDB"].DocumentClient();
 /* harmony default export */ __webpack_exports__["default"] = (() => dynamoDb.scan({
   TableName: process.env.TABLE_NAME
-}).promise().then(list => list.Items));
+}).promise().then(list => list.Items.map(Item => {
+  return { ...Item,
+    addedAt: new Date(Item.addedAt)
+  };
+})));
 
 /***/ }),
 
