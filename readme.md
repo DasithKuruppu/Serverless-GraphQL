@@ -1,31 +1,49 @@
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) [![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 
-## todo
+## Features.
+____
+1. [Serverless](https://serverless.com/) templates that provide lambda functions hooked up via an API Gateway on AWS with other scalable resorces DynamoDb,S3 bucket etc based on cloud formation templates(Infrastucture As Code- IAC) without any manual intervention to create any resorce needed for the project.
+2. Support for [Typescript](https://www.typescriptlang.org/) that compiles to Common js targeting node runtime.
+3. An attempt at unit testablity and test coverage via [Jest](https://jestjs.io/), this would be focused more heavily on later updates.
+4. Attempts to focus on a simple development structure / flow.
+5. Support for any amount of environments (Dev,Test,Production etc..) replications via Cloud formation templates.
+6. [GraphQL](https://graphql.org/) api exposed via a single endpoint with the posiblilty to scale via step functions or otherwise in future.
+7. finally CI/CD for all 3 environments (dev,test,production) via [Gitlab CI/CD](https://docs.gitlab.com/ee/ci/) 
 
-1. Add elastic search / logstash
-2. Make a proper readme
-3. Add eslint / flowjs to typesafety and codebase consistancy.
-4. unit testablity and test coverage ?
-5. contributing guidelines ?
-6. finally CI/CD environments (dev,test,production) if possible(more costly due to repetition of resorces for each enviornment).
+## How to Install & Pre-requisites
+____
+***Clone project into your local folder.... & then navigate to project on terminal or Shell***
 
-## WIKI
+```javascript 
+npm install -g serverless 
 
-1. [Check Wiki](https://gitlab.com/DasithKuruppu/serverlesseventsbe/wikis/Introduction) for more info
+serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
+```
+``` Note that the $AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY here needs to be replaced by credentials given to you by  project owner or you may create your own AWS account and IAM role / credentials for programatic access ```
+[Click here for more info !!!](https://serverless.com/framework/docs/providers/aws/guide/credentials/) 
 
-## Prerequisites
-1. npm install -g serverless
-2. serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
+Install [GraphQL Playground](https://github.com/prisma/graphql-playground/releases)  ``` optional for easy querying ```
 
-Here the 
+## Getting started
+_____
 ```javascript
-    $AWS_ACCESS_KEY_ID and $AWS_SECRET_ACCESS_KEY
-``` 
-are environment variables, These keys need to be present to access aws services I will create seperate users on aws and then give you seperate keys
+npm install
 
-## getting started
-1. npm install
-2. npm install -g graphql-cli   ``` optional ```
-3. install [GraphQL Playground](https://github.com/prisma/graphql-playground/releases)  ``` optional for easy querying ```
-4. for now just run npm start
-5. npm deploy to deploy aws
+npm install -g graphql-cli   
+
+npm run deploy-dev 
+
+npm start 
+```
+
+## Using / Playing around with it...
+____
+
+Initially make sure you have completed steps in both ***Install & Pre-requisites*** and in ***Getting started***
+
+```javascript 
+npm run deploy-dev 
+``` 
+Copy URL to the lambda function that is output onto the terminal once above command is run
+
+![GraphQLPlayground](./images/GraphQLPlayground.PNG "GraphQL PLay")
