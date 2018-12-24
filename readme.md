@@ -45,5 +45,19 @@ Initially make sure you have completed steps in both ***Install & Pre-requisites
 npm run deploy-dev 
 ``` 
 Copy URL to the lambda function that is output onto the terminal once above command is run
+![GraphQLPlayground](./images/deploy-dev.PNG "Deploy Dev terminal")
 
+Then Open GraphQL Playground and Select "URL EndPoint" and paste the Copied URL there
 ![GraphQLPlayground](./images/GraphQLPlayground.PNG "GraphQL PLay")
+
+Then Run 
+```javascript
+query {
+  listEvents {
+    id
+    name
+  }
+}
+
+```
+To see if the GraphQL works as intended
