@@ -45,10 +45,10 @@ Initially make sure you have completed steps in both ***Install & Pre-requisites
 npm run deploy-dev 
 ``` 
 Copy URL to the lambda function that is output onto the terminal once above command is run
-![GraphQLPlayground](./images/deploy-dev.PNG "Deploy Dev terminal")
+![Terminal](./images/deploy-dev.PNG "Deploy Dev terminal")
 
 Then Open GraphQL Playground and Select "URL EndPoint" and paste the Copied URL there
-![GraphQLPlayground](./images/GraphQLPlayground.PNG "GraphQL PLay")
+![GraphQL OpenProject](./images/GraphQLPlayground.PNG "GraphQL Open Project")
 
 Then Run 
 ```javascript
@@ -60,4 +60,8 @@ query {
 }
 
 ```
-To see if the GraphQL works as intended
+To see if the GraphQL query works as inteded either by returning empty list or list of "events"
+![GraphQLPlayground](./images/GraphQLPlay.PNG "GraphQL PLay")
+
+Read more on graphQL to learn Queries / Mutations to try out more queries againt the API
+
