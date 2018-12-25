@@ -40,7 +40,7 @@ const schema = new GraphQLSchema({
     fields: {
       listEvents: {
         type: new GraphQLList(eventType),
-        resolve: (parent, args) => {
+        resolve: (parent ) => {
           return listEvents();
         },
       },

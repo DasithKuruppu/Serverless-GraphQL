@@ -11,7 +11,8 @@ module.exports = {
     'ts-jest': {
       diagnostics: {
         pathRegex: /\.(spec|test)\.ts$/,
-        warnOnly: true
+        warnOnly: true,
+        ignoreCodes: [6133]
       }
     }
   },
