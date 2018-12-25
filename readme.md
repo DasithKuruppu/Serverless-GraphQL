@@ -1,5 +1,5 @@
-[![pipeline status](https://gitlab.com/DasithKuruppu/serverlesseventsbe/badges/master/pipeline.svg)](https://gitlab.com/DasithKuruppu/serverlesseventsbe/commits/master) 
-[![coverage report](https://gitlab.com/DasithKuruppu/serverlesseventsbe/badges/master/coverage.svg)](https://gitlab.com/DasithKuruppu/serverlesseventsbe/commits/master)
+CI/CD wont work on github as this uses gitlab CI/CD too lazy to change to travis CI to make it work on github so go to [Gitlab Repo](https://gitlab.com/DasithKuruppu/serverlessgraphql).
+
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) 
 [![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 
