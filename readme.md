@@ -37,8 +37,13 @@ npm install -g graphql-cli
 
 npm run deploy-dev 
 
-npm start 
 ```
+
+``` javascript
+npm start
+```
+To run it locally 
+
 
 ## Using / Playing around with it...
 ____
