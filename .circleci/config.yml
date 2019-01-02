@@ -19,6 +19,9 @@ jobs:
       - image: circleci/node:8.2
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Test
           command: npm run tslint
@@ -33,6 +36,9 @@ jobs:
       - image: circleci/node:8.2
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install global dependancies
           command: npm install -g serverless
