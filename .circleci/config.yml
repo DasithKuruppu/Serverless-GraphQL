@@ -39,7 +39,7 @@ jobs:
           key: dependency-cache-se-be-{{ checksum "package.json" }}
       - run:
           name: Install global dependancies
-          command: npm install -g serverless
+          command: sudo npm install -g serverless
       - run:
           name: Create default profile on aws using credentials
           command: serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
