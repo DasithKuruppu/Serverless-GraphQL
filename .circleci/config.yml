@@ -52,13 +52,7 @@ workflows:
       - test:
           requires:
             - build
-          filters:
-            branches:
-              only: master
       - deploy:
           context: AWS_CRED
           requires:
             - build
-          filters:
-            branches:
-              only: master
