@@ -1,8 +1,8 @@
-## CI/CD wont work on github as this is ported from gitlab and uses their CI/CD pipeline. I'm too lazy to change it right now but however an issue is [available](https://github.com/DasithKuruppu/serverlessGraphQL/issues/2) hope to add it in future.Please go to [Gitlab Repo](https://gitlab.com/DasithKuruppu/serverlessgraphql) or use gitlab if you want working CI/CD out of the box
 [![CircleCI](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL.svg?style=svg)](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) 
 [![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 
+Please go to [Gitlab Repo](https://gitlab.com/DasithKuruppu/serverlessgraphql) or use gitlab if you want to use gitlab CI/CD instead of [circleCI](https://circleci.com/)
 
 ## Features.
 ____
