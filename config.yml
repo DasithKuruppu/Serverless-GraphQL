@@ -1,0 +1,69 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/serverlesseventsbe
+    # The primary container is an instance of the first image listed. The job's commands run in this container.
+    docker:
+      - image: circleci/node:8.2
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Npm Install
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+  test:
+    docker:
+      - image: circleci/node:8.2
+    steps:
+      - checkout
+      - run:
+          name: Test
+          command: npm run tslint
+      - run:
+          name: Run unit tests and get code coverage
+          command: npm run unit-tests
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
+  deploy:
+    docker:
+      - image: circleci/node:8.2
+    steps:
+      - checkout
+      - run:
+          name: Install global dependancies
+          command: npm install -g serverless
+      - run:
+          name: Create default profile on aws using credentials
+          command: serverless config credentials --provider aws --key $AWS_ACCESS_KEY_ID --secret $AWS_SECRET_ACCESS_KEY
+      - run:
+          name: Deploy resources and upload code to aws
+          command: npm run deploy-dev
+          
+
+workflows:
+  version: 2
+  build_test_and_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - deploy:
+          context: AWS_CRED
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
