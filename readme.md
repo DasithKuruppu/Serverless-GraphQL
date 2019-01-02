@@ -1,5 +1,5 @@
-[![pipeline status](https://gitlab.com/DasithKuruppu/serverlessgraphql/badges/master/pipeline.svg)](https://gitlab.com/DasithKuruppu/serverlessgraphql/commits/master)
-[![coverage report](https://gitlab.com/DasithKuruppu/serverlessgraphql/badges/master/coverage.svg)](https://gitlab.com/DasithKuruppu/serverlessgraphql/commits/master)
+## CI/CD wont work on github as this uses gitlab CI/CD I'm too lazy to change to travis CI just to make it work on github, so please go to [Gitlab Repo](https://gitlab.com/DasithKuruppu/serverlessgraphql) or use gitlab if you want CI/CD
+
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) 
 [![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 
@@ -37,8 +37,13 @@ npm install -g graphql-cli
 
 npm run deploy-dev 
 
-npm start 
 ```
+
+``` javascript
+npm start
+```
+To run it locally 
+
 
 ## Using / Playing around with it...
 ____
