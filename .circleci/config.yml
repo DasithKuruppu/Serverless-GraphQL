@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/serverlesseventsbe
     # The primary container is an instance of the first image listed. The job's commands run in this container.
     docker:
       - image: circleci/node:8.2
@@ -31,6 +30,7 @@ jobs:
           path: coverage
           prefix: coverage
   deploy:
+    working_directory: ~/serverlesseventsbe
     docker:
       - image: circleci/node:8.2
     steps:
