@@ -22,7 +22,7 @@ jobs:
           key: dependency-cache-se-be-{{ checksum "package.json" }}
       - run:
           name: Test
-          command: sudo npm install -g tslint
+          command: npm install tslint
       - run:
           name: Test
           command: npm run tslint
