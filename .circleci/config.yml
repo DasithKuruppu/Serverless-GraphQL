@@ -11,7 +11,7 @@ jobs:
           name: Npm Install
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-se-be-{{ checksum "package.json" }}
           paths:
             - node_modules
   test:
@@ -20,7 +20,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-se-be-{{ checksum "package.json" }}
       - run:
           name: Test
           command: ./node_modules/.bin/tslint --project tsconfig.json --config tslint.json
@@ -36,7 +36,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-se-be-{{ checksum "package.json" }}
       - run:
           name: Install global dependancies
           command: npm install -g serverless
