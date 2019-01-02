@@ -20,11 +20,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Test
-          command: npm run tslint
+          command: ./node_modules/.bin/tslint --project tsconfig.json --config tslint.json
       - run:
           name: Run unit tests and get code coverage
           command: npm run unit-tests
@@ -37,8 +36,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Install global dependancies
           command: npm install -g serverless
