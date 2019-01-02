@@ -69,11 +69,11 @@ const schema = new GraphQLSchema({
           return addEvent(args);
         },
       },
-      removeProduct: {
+      removeEvent: {
         args: {
           id: { type: new GraphQLNonNull(GraphQLString) },
         },
-        type: GraphQLBoolean,
+        type: eventType,
         resolve: (parent, args: { id: string }) => {
           return removeEvent(args.id);
         },

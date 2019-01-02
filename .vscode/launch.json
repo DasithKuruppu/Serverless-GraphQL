@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Serverless Offline",
       "program": "${workspaceRoot}/node_modules/serverless/bin/serverless",
-      "args": ["offline", "--noTimeout", "--dontPrintOutput", "--stage=dev"],
+      "args": ["offline", "--noTimeout", "--dontPrintOutput", "--stage=default"],
       "sourceMaps": true,
       "runtimeArgs": ["--lazy"],
       "outFiles": ["${workspaceFolder}/.webpack/**/*.js"],

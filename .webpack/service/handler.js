@@ -196,14 +196,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var aws_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(aws_sdk__WEBPACK_IMPORTED_MODULE_0__);
 
 const dynamoDb = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["DynamoDB"].DocumentClient();
-/* harmony default export */ __webpack_exports__["default"] = (id => {
+/* harmony default export */ __webpack_exports__["default"] = (async id => {
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: {
       id
-    }
+    },
+    ReturnValues: "ALL_OLD"
   };
-  return dynamoDb.delete(params).promise();
+
+  try {
+    const response = await dynamoDb.delete(params).promise();
+    return response.Attributes;
+  } catch (error) {
+    throw error;
+  }
 });
 
 /***/ }),
@@ -221,14 +228,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var aws_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(aws_sdk__WEBPACK_IMPORTED_MODULE_0__);
 
 const dynamoDb = new aws_sdk__WEBPACK_IMPORTED_MODULE_0__["DynamoDB"].DocumentClient();
-/* harmony default export */ __webpack_exports__["default"] = (id => {
+/* harmony default export */ __webpack_exports__["default"] = (async id => {
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: {
       id
     }
   };
-  return dynamoDb.get(params).promise().then(GetEvents => GetEvents.Item);
+  const GetEvents = await dynamoDb.get(params).promise();
+  return GetEvents.Item;
 });
 
 /***/ }),
@@ -284,7 +292,7 @@ const schema = new graphql__WEBPACK_IMPORTED_MODULE_0__["GraphQLSchema"]({
     fields: {
       listEvents: {
         type: new graphql__WEBPACK_IMPORTED_MODULE_0__["GraphQLList"](eventType),
-        resolve: (parent, args) => {
+        resolve: parent => {
           return Object(_resolvers_events_list__WEBPACK_IMPORTED_MODULE_4__["default"])();
         }
       },
@@ -318,13 +326,13 @@ const schema = new graphql__WEBPACK_IMPORTED_MODULE_0__["GraphQLSchema"]({
           return Object(_resolvers_events_create__WEBPACK_IMPORTED_MODULE_2__["default"])(args);
         }
       },
-      removeProduct: {
+      removeEvent: {
         args: {
           id: {
             type: new graphql__WEBPACK_IMPORTED_MODULE_0__["GraphQLNonNull"](graphql__WEBPACK_IMPORTED_MODULE_0__["GraphQLString"])
           }
         },
-        type: graphql__WEBPACK_IMPORTED_MODULE_0__["GraphQLBoolean"],
+        type: eventType,
         resolve: (parent, args) => {
           return Object(_resolvers_events_remove__WEBPACK_IMPORTED_MODULE_5__["default"])(args.id);
         }

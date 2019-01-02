@@ -1,13 +1,13 @@
 import { DynamoDB } from "aws-sdk";
 const dynamoDb = new DynamoDB.DocumentClient();
 
-export default (id: string) => {
+export default async (id: string) => {
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: { id },
   };
-  return dynamoDb
+  const GetEvents = await dynamoDb
     .get(params)
-    .promise()
-    .then((GetEvents) => GetEvents.Item);
+    .promise();
+  return GetEvents.Item;
 };
