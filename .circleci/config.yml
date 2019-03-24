@@ -60,6 +60,6 @@ workflows:
           requires:
             - build
       - deploy:
-          context: AWS_CRED
+          context: GatsbyNetlify
           requires:
             - build
