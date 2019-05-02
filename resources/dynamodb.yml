@@ -13,5 +13,8 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: ${self:custom.tableThroughput}
         WriteCapacityUnits: ${self:custom.tableThroughput}
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
 
   

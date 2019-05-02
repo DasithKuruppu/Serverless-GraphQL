@@ -28,7 +28,6 @@ custom:
       - "!**/node_modules/**"
       - "!**/.webpack/**"
     preset: "ts-jest"
-
   environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
 provider:
   name: aws
@@ -37,49 +36,64 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
+        - dynamodb:ListTables
         - dynamodb:DescribeTable
-        - dynamodb:Query
-        - dynamodb:Scan
+        - dynamodb:DescribeStream
+        - dynamodb:ListStreams
+        - dynamodb:GetShardIterator
+        - dynamodb:BatchGetItem
         - dynamodb:GetItem
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:DescribeReservedCapacity
+        - dynamodb:DescribeReservedCapacityOfferings
+        - dynamodb:GetRecords
       Resource:
         Fn::Join:
           - ""
           - - "arn:aws:dynamodb:*:*:table/"
             - Ref: EventsGqlDynamoDbTable
+    - Effect: Allow
+      Action:
+        - es:ESHttpPost
+        - es:ESHttpPut
+        - es:ESHttpDelete
+        - es:ESHttpGet
+      Resource:
+        - { "Fn::GetAtt": ["EventsGqlElasticSearch", "DomainArn"] }
+        - { "Fn::Join": ["", ["Fn::GetAtt": ["EventsGqlElasticSearch", "DomainArn"], "/*"]] }
 functions:
-  getEvents:
+  queryEvents:
     handler: handler.queryEvents
     events:
       - http:
           path: events
-          method: get
+          method: post
           cors: true
-          authorizer: aws_iam
     environment:
       TABLE_NAME: ${self:custom.tableName}
-  createEvents:
-    handler: handler.createEvents
+  dynamo-stream-to-elasticsearch:
+    handler: handler.processStreams
+    memorySize: 128
+    timeout: 60
     events:
-      - http:
-          path: events
-          method: get
-          cors: true
-          authorizer: aws_iam
+      - stream:
+          type: dynamodb
+          batchSize: 100
+          enabled: true
+          arn:
+            Fn::GetAtt:
+            - EventsGqlDynamoDbTable
+            - StreamArn
     environment:
-      TABLE_NAME: ${self:custom.tableName}
-  deleteEvents:
-    handler: handler.deleteEvents
-    events:
-      - http:
-          path: events/{id}
-          method: delete
-          cors: true
-          authorizer: aws_iam
-    environment:
-      TABLE_NAME: ${self:custom.tableName}
+      ELASTICSEARCH_URL:
+        Fn::GetAtt: 
+        - EventsGqlElasticSearch
+        - DomainEndpoint # get domain endpoitn attribute from elastic search resource
+
 resources:
   # DynamoDB
   - ${file(resources/dynamodb.yml)}
@@ -88,4 +102,6 @@ resources:
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
   - ${file(resources/cognito-identity-pool.yml)}
+  # elasticsearch
+  - ${file(resources/elasticsearch.yml)}
   
