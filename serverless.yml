@@ -3,6 +3,7 @@ plugins:
   - serverless-webpack
   - serverless-dynamodb-local
   - serverless-plugin-offline-dynamodb-stream
+  - serverless-s3-sync #https://github.com/k1LoW/serverless-s3-sync
   - serverless-jest-plugin
   - serverless-offline
 custom:
@@ -12,6 +13,13 @@ custom:
   # Set the table name here so we can use it while testing locally
   tableName: ${self:custom.stage}-events
   # Set our DynamoDB throughput for prod and all other non-prod stages.
+  s3Bucket: webapps3bucket-${self:custom.stage}
+  s3Sync:
+    - bucketName: ${self:custom.s3Bucket} # required
+      localDir: client/ # required
+      params: # optional
+        - index.html:
+            CacheControl: 'no-cache'
   tableThroughputs:
     prod: 1 #more throughput on production env 
     default: 1
@@ -110,10 +118,10 @@ resources:
   # DynamoDB
   - ${file(resources/dynamodb.yml)}
   # S3
-  - ${file(resources/s3-bucket.yml)}
+  - ${file(resources/s3-bucket-cdn.yml)}
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
   - ${file(resources/cognito-identity-pool.yml)}
   # elasticsearch
   - ${file(resources/elasticsearch.yml)}
-  
+
