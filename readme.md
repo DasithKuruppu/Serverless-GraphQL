@@ -11,6 +11,10 @@
 
 Please go to [Gitlab Repo](https://gitlab.com/DasithKuruppu/serverlessgraphql) or use gitlab if you want to use free gitlab CI/CD instead of [circleCI](https://circleci.com/)
 
+Read more on : 
+* [Medium post](https://levelup.gitconnected.com/going-serverless-with-nodejs-graphql-5b34f5d280f4) on setting this up
+* Vist [dasithsblog.com](https://www.dasithsblog.com/) for other cool stuff.
+
 
 ## Features.
 
