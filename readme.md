@@ -1,5 +1,6 @@
 
-## Nodejs/GraphQL - IaC, devOps, Infinitely scalable & other 🦄 magical stuff
+## Serverless Nodejs/GraphQL
+(IaC using YML/Serverless, devOps, Infinitely scalable & other 🦄 magical stuff)
 
 [![CircleCI](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL.svg?style=svg)](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL)
 [![](https://img.shields.io/david/DasithKuruppu/serverlessGraphQL.svg)](https://github.com/DasithKuruppu/serverlessGraphQL)
