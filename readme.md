@@ -2,10 +2,10 @@
 ## 🌩️ Serverless Nodejs/GraphQL Boilerplate
 (IaC using YML/Serverless, devOps, Infinitely scalable & other 🦄 magical stuff)
 
-[![CircleCI](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL.svg?style=svg)](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL)
-[![](https://img.shields.io/david/DasithKuruppu/serverlessGraphQL.svg)](https://github.com/DasithKuruppu/serverlessGraphQL)
-[![](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/DasithKuruppu/serverlessGraphQL)
-[![](https://img.shields.io/npm/types/ts.svg)](https://github.com/DasithKuruppu/serverlessGraphQL)
+[![CircleCI](https://circleci.com/gh/DasithKuruppu/Serverless-GraphQL.svg?style=svg)](https://circleci.com/gh/DasithKuruppu/Serverless-GraphQL)
+[![](https://img.shields.io/david/DasithKuruppu/serverlessGraphQL.svg)](https://github.com/DasithKuruppu/Serverless-GraphQL)
+[![](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/DasithKuruppu/Serverless-GraphQL)
+[![](https://img.shields.io/npm/types/ts.svg)](https://github.com/DasithKuruppu/Serverless-GraphQL)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
 
