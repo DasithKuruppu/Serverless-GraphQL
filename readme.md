@@ -29,6 +29,12 @@ Read more on :
 7. ✔️ CI/CD for all 3 environments (dev,test,production) via [Gitlab CI/CD](https://docs.gitlab.com/ee/ci/)
 8. 🐋 Docker file / compose for running dynamodb offline on a docker container.
 
+
+## Architecture 
+
+![Architecture diagram](https://cdn-images-1.medium.com/max/1200/1*luzrrxaE39RRNO96vHFpAA.png)
+
+
 ## How to Install & Pre-requisites
 
 ---
