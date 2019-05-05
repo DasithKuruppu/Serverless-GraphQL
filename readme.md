@@ -1,3 +1,6 @@
+
+## Nodejs/GraphQL - IaC, devOps, Infinitely scalable & other 🦄 magical stuff
+
 [![CircleCI](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL.svg?style=svg)](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL)
 [![](https://img.shields.io/david/DasithKuruppu/serverlessGraphQL.svg)](https://github.com/DasithKuruppu/serverlessGraphQL)
 [![](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/DasithKuruppu/serverlessGraphQL)
@@ -7,7 +10,6 @@
 
 Please go to [Gitlab Repo](https://gitlab.com/DasithKuruppu/serverlessgraphql) or use gitlab if you want to use free gitlab CI/CD instead of [circleCI](https://circleci.com/)
 
-## Serverless Nodejs/GraphQL Boilerplate with (IaC,devOps,single command deployment & 🦄 magical stuff)
 
 ## Features.
 
