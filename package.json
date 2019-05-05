@@ -6,7 +6,7 @@
     "email": "dasithkuruppu@gmail.com",
     "url": "https://github.com/DasithKuruppu"
   },
-  "description": "initial boilerplate for serverless lambda with dynamodb and graphql - events booking app",
+  "description": "Initial boilerplate for serverless lambda with dynamodb,elasticsearch and graphql - events booking app",
   "keywords": [
     "FaaS",
     "nodejs",
@@ -21,9 +21,10 @@
     "test-lambda": "serverless invoke test --stage default -f queryEvents",
     "start": "serverless offline start",
     "compile-debug": "serverless webpack --out dist",
-    "deploy-dev": "serverless deploy -v --stage=default",
+    "deploy-dev": "serverless deploy -v --stage=devdefault --force",
     "deploy-test": "serverless deploy -v --stage=test",
     "deploy-prod": "serverless deploy -v --stage=prod",
+    "deploy-to-bucket": "serverless s3sync",
     "tslint": "tslint --project tsconfig.json --config tslint.json",
     "compile-tests": "webpack --config configs/test.webpack.config.js",
     "unit-tests": "jest --config jest.config.js --verbose",
@@ -37,6 +38,7 @@
     "graphql": "^14.0.2",
     "graphql-dynamodb-connections": "^1.0.2",
     "graphql-iso-date": "^3.6.1",
+    "serverless-s3-sync": "^1.8.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -64,6 +66,7 @@
     "typescript": "^3.2.1",
     "webpack": "^4.26.0",
     "webpack-cli": "^3.1.2",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "serverless-s3-deploy": "^0.8.0"
   }
 }

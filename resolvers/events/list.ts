@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
-const dynamoDb = new DynamoDB.DocumentClient();
+import { dynamoDbClient } from "../../dynamodb";
 export default () =>
-  dynamoDb
+dynamoDbClient
     .scan({ TableName: process.env.TABLE_NAME })
     .promise()
     .then((list: DynamoDB.DocumentClient.ScanOutput) => list.Items.map(
