@@ -1,5 +1,4 @@
-import { DynamoDB, AWSError } from "aws-sdk";
-const dynamoDb = new DynamoDB.DocumentClient();
+import { dynamoDbClient } from "../../dynamodb";
 
 export default  async (id: string) => {
   const params = {
@@ -8,7 +7,7 @@ export default  async (id: string) => {
     ReturnValues: "ALL_OLD",
   };
   try {
-    const response = await dynamoDb.delete(params).promise();
+    const response = await dynamoDbClient.delete(params).promise();
     return response.Attributes;
   } catch (error) {
     throw error;

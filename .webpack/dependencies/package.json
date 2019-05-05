@@ -1,0 +1,14 @@
+{
+  "name": "aws-nodejs",
+  "version": "1.0.0",
+  "description": "Packaged externals for aws-nodejs",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "graphql": "^14.0.2",
+    "aws-sdk": "^2.361.0",
+    "graphql-iso-date": "^3.6.1",
+    "uuid": "^3.3.2",
+    "@elastic/elasticsearch": "^7.0.0-rc.2"
+  }
+}
