@@ -32,9 +32,6 @@ jobs:
       - run:
           name: Run unit tests and get code coverage
           command: npm run unit-tests
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
   deploy:
     working_directory: ~/serverlesseventsbe
     docker:
