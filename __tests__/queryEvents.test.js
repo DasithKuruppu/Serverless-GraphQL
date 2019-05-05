@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -101,42 +101,13 @@ module.exports = require("aws-sdk");
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("graphql-iso-date");
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
 module.exports = require("uuid/v4");
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("@elastic/elasticsearch");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("serverless-jest-plugin");
-
-/***/ }),
-/* 6 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-var handler_namespaceObject = {};
-__webpack_require__.r(handler_namespaceObject);
-__webpack_require__.d(handler_namespaceObject, "queryEvents", function() { return queryEvents; });
-__webpack_require__.d(handler_namespaceObject, "processStreams", function() { return processStreams; });
-
-// EXTERNAL MODULE: external "graphql"
-var external_graphql_ = __webpack_require__(0);
-
-// EXTERNAL MODULE: external "graphql-iso-date"
-var external_graphql_iso_date_ = __webpack_require__(2);
 
 // EXTERNAL MODULE: external "aws-sdk"
 var external_aws_sdk_ = __webpack_require__(1);
@@ -155,9 +126,10 @@ if (process.env.IS_OFFLINE) {
 
 
 // EXTERNAL MODULE: external "uuid/v4"
-var v4_ = __webpack_require__(3);
+var v4_ = __webpack_require__(2);
 
 // CONCATENATED MODULE: ./resolvers/events/create.ts
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createParams; });
 
 
 function createParams(data, TableName, uniqueID) {
@@ -171,7 +143,7 @@ function createParams(data, TableName, uniqueID) {
     TableName
   };
 }
-/* harmony default export */ var create = (data => {
+/* harmony default export */ var create = __webpack_exports__["b"] = (data => {
   const putParams = createParams(data, process.env.TABLE_NAME, v4_());
   return dynamoDbClient.put(putParams).promise().then(() => {
     return putParams.Item;
@@ -179,6 +151,49 @@ function createParams(data, TableName, uniqueID) {
     throw err;
   });
 });
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("graphql-iso-date");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("@elastic/elasticsearch");
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("serverless-jest-plugin");
+
+/***/ }),
+/* 7 */,
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var handler_namespaceObject = {};
+__webpack_require__.r(handler_namespaceObject);
+__webpack_require__.d(handler_namespaceObject, "queryEvents", function() { return queryEvents; });
+__webpack_require__.d(handler_namespaceObject, "processStreams", function() { return processStreams; });
+
+// EXTERNAL MODULE: external "graphql"
+var external_graphql_ = __webpack_require__(0);
+
+// EXTERNAL MODULE: external "graphql-iso-date"
+var external_graphql_iso_date_ = __webpack_require__(4);
+
+// EXTERNAL MODULE: ./resolvers/events/create.ts + 1 modules
+var create = __webpack_require__(3);
+
+// EXTERNAL MODULE: external "aws-sdk"
+var external_aws_sdk_ = __webpack_require__(1);
+
 // CONCATENATED MODULE: ./resolvers/events/view.ts
 
 const dynamoDb = new external_aws_sdk_["DynamoDB"].DocumentClient();
@@ -287,7 +302,7 @@ const schema = new external_graphql_["GraphQLSchema"]({
         },
         type: eventType,
         resolve: (parent, args) => {
-          return create(args);
+          return Object(create["b" /* default */])(args);
         }
       },
       removeEvent: {
@@ -306,7 +321,7 @@ const schema = new external_graphql_["GraphQLSchema"]({
 });
 /* harmony default export */ var schemas = (schema);
 // EXTERNAL MODULE: external "@elastic/elasticsearch"
-var elasticsearch_ = __webpack_require__(4);
+var elasticsearch_ = __webpack_require__(5);
 
 // CONCATENATED MODULE: ./elasticSearch/elasticSearchConnect.ts
 
@@ -426,7 +441,7 @@ async function processStreams(event) {
   await indexElasticSearch(event);
 }
 // EXTERNAL MODULE: external "serverless-jest-plugin"
-var external_serverless_jest_plugin_ = __webpack_require__(5);
+var external_serverless_jest_plugin_ = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./__tests__/queryEvents.test.ts
 // tests for queryEvents
