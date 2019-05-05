@@ -27,6 +27,9 @@ jobs:
           name: Test
           command: npm run tslint
       - run:
+          name: Build unit tests
+          command: npm run compile-tests
+      - run:
           name: Run unit tests and get code coverage
           command: npm run unit-tests
       - store_artifacts:

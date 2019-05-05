@@ -45,7 +45,7 @@ module.exports = {
       extensions: [".ts", ".js"],
     },
     output: {
-      libraryTarget: "commonjs",
+      libraryTarget: "commonjs2",
       path: path.join(__dirname, "../__tests__/"),
       filename: "[name].js",
       sourceMapFilename: "[file].map",
