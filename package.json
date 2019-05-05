@@ -49,6 +49,7 @@
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.11",
     "babel-loader": "^8.0.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "jest": "^23.6.0",
     "serverless": "^1.41.1",
     "serverless-dynamodb-local": "^0.2.25",

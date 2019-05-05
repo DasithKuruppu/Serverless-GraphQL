@@ -10,11 +10,10 @@ console.log(TestEntries);
 module.exports = {
     entry: TestEntries.reduce(function(prev,currentfileName){
       var pathObj={};
-      var prevCopy = Object.assign(prev);
       var splitFiles=currentfileName.split(".");
       var newFileName=splitFiles.slice(0,splitFiles.length-1).join(".");
-      prevCopy[newFileName]=path.join(__dirname, "../__tests__/"+currentfileName)
-      return prevCopy;
+      pathObj[newFileName]=path.join(__dirname, "../__tests__/"+currentfileName)
+      return {...prev,...pathObj};
     },{}),
     target: "node",
     mode: slsw.lib.webpack.isLocal ? "development" : "production",
