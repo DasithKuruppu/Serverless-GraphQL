@@ -1,0 +1,37 @@
+{
+  "Records": [
+    {
+      "eventID": "009e960aaa7b72d24da376226aa92c1e",
+      "eventName": "INSERT",
+      "eventVersion": "1.1",
+      "eventSource": "aws:dynamodb",
+      "awsRegion": "us-east-1",
+      "dynamodb": {
+        "ApproximateCreationDateTime": 1557032163,
+        "Keys": {
+          "id": {
+            "S": "c437ed51-5d0e-4828-9f78-bcf3c40ab55e"
+          }
+        },
+        "NewImage": {
+          "addedAt": {
+            "N": "1557032163354"
+          },
+          "name": {
+            "S": "Random event"
+          },
+          "description": {
+            "S": "Random Description"
+          },
+          "id": {
+            "S": "c437ed51-5d0e-4828-9f78-bcf3c40ab55e"
+          }
+        },
+        "SequenceNumber": "15970400000000003743028958",
+        "SizeBytes": 136,
+        "StreamViewType": "NEW_AND_OLD_IMAGES"
+      },
+      "eventSourceARN": "arn:aws:dynamodb:us-east-1:315050634537:table/test-events/stream/2019-05-01T16:40:18.739"
+    }
+  ]
+}

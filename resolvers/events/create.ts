@@ -1,6 +1,5 @@
-import { DynamoDB } from "aws-sdk";
 import { IEvent } from "./typings";
-const dynamoDb = new DynamoDB.DocumentClient();
+import { dynamoDbClient } from "../../dynamodb";
 import * as uuidv4 from "uuid/v4";
 
 export function createParams(data: IEvent, TableName: string , uniqueID: string) {
@@ -17,7 +16,7 @@ export function createParams(data: IEvent, TableName: string , uniqueID: string)
 
 export default (data: IEvent) => {
   const putParams = createParams(data, process.env.TABLE_NAME, uuidv4());
-  return dynamoDb
+  return dynamoDbClient
     .put(putParams)
     .promise()
     .then(() => {

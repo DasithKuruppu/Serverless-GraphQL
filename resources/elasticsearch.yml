@@ -1,5 +1,5 @@
 Resources:   
-   EventsGqlElasticSearch:
+  EventsGqlElasticSearch:
     Type: "AWS::Elasticsearch::Domain"
     Properties:
       ElasticsearchVersion: "6.3"

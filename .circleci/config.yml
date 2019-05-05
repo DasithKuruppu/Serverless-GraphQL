@@ -41,6 +41,9 @@ jobs:
       - restore_cache:
           key: dependency-cache-se-be-{{ checksum "package.json" }}
       - run:
+          name: Npm Install
+          command: npm install
+      - run:
           name: Install global dependancies
           command: sudo npm install -g serverless
       - run:

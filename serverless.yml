@@ -1,8 +1,10 @@
 service: aws-nodejs
 plugins:
   - serverless-webpack
-  - serverless-offline
+  - serverless-dynamodb-local
+  - serverless-plugin-offline-dynamodb-stream
   - serverless-jest-plugin
+  - serverless-offline
 custom:
   # Our stage is based on what is passed in when running serverless
   # commands. Or fallsback to what we have set in the provider section.
@@ -17,9 +19,19 @@ custom:
   webpack:
     webpackConfig: './webpack.config.js'   # Name of webpack configuration file
     includeModules: true   # Node modules configuration for packaging
-    packager: 'npm'   # Packager that will be used to package your external modules
-  # Load our secret environment variables based on the current stage.
-  # Fallback to default if it is not in prod.
+    packager: 'npm'   # Packager that will be used to package your external module
+  dynamodb:
+    start:
+      port: 8000
+      migrate: true
+      inMemory: true
+      noStart: true
+  dynamodbStream:
+    port: 8000
+    streams:
+      - table: EventTable
+        functions:
+          - processStreams
   jest:
     collectCoverage: true
     collectCoverageFrom:
@@ -89,10 +101,11 @@ functions:
             - EventsGqlDynamoDbTable
             - StreamArn
     environment:
+      ENV_TYPE: "test"
       ELASTICSEARCH_URL:
-        Fn::GetAtt: 
+        Fn::GetAtt:
         - EventsGqlElasticSearch
-        - DomainEndpoint # get domain endpoitn attribute from elastic search resource
+        - DomainEndpoint
 
 resources:
   # DynamoDB
