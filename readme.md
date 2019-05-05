@@ -15,13 +15,14 @@ Please go to [Gitlab Repo](https://gitlab.com/DasithKuruppu/serverlessgraphql) o
 
 ---
 
-1. ⚡ [Serverless](https://serverless.com/) YML templates(Infrastucture As Code- IAC) that provide and provision dynamic/scalable resources like DynamoDb,S3,elastic search, lambda functions etc with one a single command.
+1. ⚡ [Serverless](https://serverless.com/) YML templates(Infrastucture As Code- IAC) that provide and provision dynamic/scalable resources like DynamoDb,S3,elastic search, lambda functions etc with a single command.
 2. 📜 Support for [Typescript](https://www.typescriptlang.org/).
 3. 🎭 An attempt at unit testablity and test coverage via [Jest](https://jestjs.io/), this would be focused more heavily on later updates.
 4. 🌀 Attempts to focus on a simple development structure / flow.
 5. 🏋️‍♂️ Support for any amount of environments (Dev,Test,Production etc..) replications via Cloud formation templates.
 6. 🕸️[GraphQL](https://graphql.org/) api exposed via a single endpoint with the posiblilty to scale via step functions or otherwise in future.
 7. ✔️ CI/CD for all 3 environments (dev,test,production) via [Gitlab CI/CD](https://docs.gitlab.com/ee/ci/)
+8. 🐋 Docker file / compose for running dynamodb offline on a docker container.
 
 ## How to Install & Pre-requisites
 
