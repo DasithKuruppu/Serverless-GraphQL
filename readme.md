@@ -1,5 +1,5 @@
 
-## Serverless Nodejs/GraphQL
+## 🌩️ Serverless Nodejs/GraphQL Boilerplate
 (IaC using YML/Serverless, devOps, Infinitely scalable & other 🦄 magical stuff)
 
 [![CircleCI](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL.svg?style=svg)](https://circleci.com/gh/DasithKuruppu/serverlessGraphQL)
