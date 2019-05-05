@@ -35,7 +35,7 @@ custom:
   jest:
     collectCoverage: true
     collectCoverageFrom:
-      - "**/*.ts"
+      - "**/*.js"
       - "!**/__tests__/**"
       - "!**/node_modules/**"
       - "!**/.webpack/**"
