@@ -34,7 +34,6 @@
   "dependencies": {
     "@elastic/elasticsearch": "^7.0.0-rc.2",
     "aws-sdk": "^2.361.0",
-    "dynamodb-stream-elasticsearch": "^2.3.0",
     "graphql": "^14.0.2",
     "graphql-dynamodb-connections": "^1.0.2",
     "graphql-iso-date": "^3.6.1",
