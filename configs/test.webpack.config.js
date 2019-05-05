@@ -6,7 +6,7 @@ const fs = require('fs');
 const TestEntries = fs.readdirSync('./__tests__').filter(function(file) {
   return file.match(/.*\.ts$/);
 });
-console.log(TestEntries);
+
 module.exports = {
     entry: TestEntries.reduce(function(prev,currentfileName){
       var pathObj={};
