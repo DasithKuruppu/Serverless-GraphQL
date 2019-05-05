@@ -5,7 +5,12 @@ jspm_packages
 # Serverless directories
 .serverless
 
-.env.yml
+#dynamodb offline relate files
+.dynamodb
 
+
+# test coveragr files
 coverage
 
+# env files 
+.env*

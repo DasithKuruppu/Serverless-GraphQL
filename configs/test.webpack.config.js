@@ -6,14 +6,14 @@ const fs = require('fs');
 const TestEntries = fs.readdirSync('./__tests__').filter(function(file) {
   return file.match(/.*\.ts$/);
 });
-console.log(TestEntries);
+
 module.exports = {
     entry: TestEntries.reduce(function(prev,currentfileName){
-      var pathObj={};
+      var pathObj= Object.assign({},prev);
       var splitFiles=currentfileName.split(".");
       var newFileName=splitFiles.slice(0,splitFiles.length-1).join(".");
       pathObj[newFileName]=path.join(__dirname, "../__tests__/"+currentfileName)
-      return {...prev,...pathObj};
+      return pathObj;
     },{}),
     target: "node",
     mode: slsw.lib.webpack.isLocal ? "development" : "production",

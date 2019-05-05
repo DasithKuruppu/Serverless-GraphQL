@@ -27,11 +27,11 @@ jobs:
           name: Test
           command: npm run tslint
       - run:
+          name: Build unit tests
+          command: npm run compile-tests
+      - run:
           name: Run unit tests and get code coverage
           command: npm run unit-tests
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
   deploy:
     working_directory: ~/serverlesseventsbe
     docker:
@@ -40,6 +40,9 @@ jobs:
       - checkout
       - restore_cache:
           key: dependency-cache-se-be-{{ checksum "package.json" }}
+      - run:
+          name: Npm Install
+          command: npm install
       - run:
           name: Install global dependancies
           command: sudo npm install -g serverless

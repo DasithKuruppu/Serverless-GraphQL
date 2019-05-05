@@ -6,9 +6,10 @@
       {
         "modules": false,
         "targets": {
-          "node": "8.10"
+          "node": "8.20"
         }
       }
     ]
-  ]
+  ],
+  "plugins": ["@babel/plugin-proposal-object-rest-spread"]
 }

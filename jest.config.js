@@ -7,6 +7,7 @@ module.exports = {
     "!**/node_modules/**",
     "!**/.webpack/**"
   ],
+  testMatch: ["**/__tests__/**/*.js", "**/?(*.)+(spec|test).js"],
   globals: {
     'ts-jest': {
       diagnostics: {

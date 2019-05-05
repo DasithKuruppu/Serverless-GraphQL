@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  dynamodblocal:
+    build: .
+    ports:
+     - "8000:8000"
+    command: npm run dynamodb-start
+    tty: true
+    stdin_open: true
+    image: dynamodboffline:dasith
+    working_dir: /app
+    volumes:
+      - .:/app
+    container_name: dynamodboffline-dasith
+    env_file:
+      - .env.docker
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

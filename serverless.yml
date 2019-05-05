@@ -1,8 +1,10 @@
 service: aws-nodejs
 plugins:
   - serverless-webpack
-  - serverless-offline
+  - serverless-dynamodb-local
+  - serverless-plugin-offline-dynamodb-stream
   - serverless-jest-plugin
+  - serverless-offline
 custom:
   # Our stage is based on what is passed in when running serverless
   # commands. Or fallsback to what we have set in the provider section.
@@ -17,18 +19,27 @@ custom:
   webpack:
     webpackConfig: './webpack.config.js'   # Name of webpack configuration file
     includeModules: true   # Node modules configuration for packaging
-    packager: 'npm'   # Packager that will be used to package your external modules
-  # Load our secret environment variables based on the current stage.
-  # Fallback to default if it is not in prod.
+    packager: 'npm'   # Packager that will be used to package your external module
+  dynamodb:
+    start:
+      port: 8000
+      migrate: true
+      inMemory: true
+      noStart: true
+  dynamodbStream:
+    port: 8000
+    streams:
+      - table: EventTable
+        functions:
+          - processStreams
   jest:
     collectCoverage: true
     collectCoverageFrom:
-      - "**/*.ts"
+      - "**/*.js"
       - "!**/__tests__/**"
       - "!**/node_modules/**"
       - "!**/.webpack/**"
     preset: "ts-jest"
-
   environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
 provider:
   name: aws
@@ -37,49 +48,64 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
+        - dynamodb:ListTables
         - dynamodb:DescribeTable
-        - dynamodb:Query
-        - dynamodb:Scan
+        - dynamodb:DescribeStream
+        - dynamodb:ListStreams
+        - dynamodb:GetShardIterator
+        - dynamodb:BatchGetItem
         - dynamodb:GetItem
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:DescribeReservedCapacity
+        - dynamodb:DescribeReservedCapacityOfferings
+        - dynamodb:GetRecords
       Resource:
         Fn::Join:
           - ""
           - - "arn:aws:dynamodb:*:*:table/"
             - Ref: EventsGqlDynamoDbTable
+    - Effect: Allow
+      Action:
+        - es:ESHttpPost
+        - es:ESHttpPut
+        - es:ESHttpDelete
+        - es:ESHttpGet
+      Resource:
+        - { "Fn::GetAtt": ["EventsGqlElasticSearch", "DomainArn"] }
+        - { "Fn::Join": ["", ["Fn::GetAtt": ["EventsGqlElasticSearch", "DomainArn"], "/*"]] }
 functions:
-  getEvents:
+  queryEvents:
     handler: handler.queryEvents
     events:
       - http:
           path: events
-          method: get
+          method: post
           cors: true
-          authorizer: aws_iam
     environment:
       TABLE_NAME: ${self:custom.tableName}
-  createEvents:
-    handler: handler.createEvents
+  dynamo-stream-to-elasticsearch:
+    handler: handler.processStreams
+    memorySize: 128
+    timeout: 60
     events:
-      - http:
-          path: events
-          method: get
-          cors: true
-          authorizer: aws_iam
+      - stream:
+          type: dynamodb
+          batchSize: 100
+          enabled: true
+          arn:
+            Fn::GetAtt:
+            - EventsGqlDynamoDbTable
+            - StreamArn
     environment:
-      TABLE_NAME: ${self:custom.tableName}
-  deleteEvents:
-    handler: handler.deleteEvents
-    events:
-      - http:
-          path: events/{id}
-          method: delete
-          cors: true
-          authorizer: aws_iam
-    environment:
-      TABLE_NAME: ${self:custom.tableName}
+      ELASTICSEARCH_URL:
+        Fn::GetAtt:
+        - EventsGqlElasticSearch
+        - DomainEndpoint
+
 resources:
   # DynamoDB
   - ${file(resources/dynamodb.yml)}
@@ -88,4 +114,6 @@ resources:
   # Cognito
   - ${file(resources/cognito-user-pool.yml)}
   - ${file(resources/cognito-identity-pool.yml)}
+  # elasticsearch
+  - ${file(resources/elasticsearch.yml)}
   
