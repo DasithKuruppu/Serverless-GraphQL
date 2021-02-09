@@ -1,6 +1,6 @@
 
 ## 🌩️ Serverless Nodejs/GraphQL Boilerplate
-(IaC using YML/Serverless, devOps, Scalability & other 🦄 magical stuff)
+(IaC using YML/Serverless  & other 🦄 magical stuff)
 
 [![CircleCI](https://circleci.com/gh/DasithKuruppu/Serverless-GraphQL.svg?style=svg)](https://circleci.com/gh/DasithKuruppu/Serverless-GraphQL)
 [![](https://img.shields.io/david/DasithKuruppu/serverlessGraphQL.svg)](https://github.com/DasithKuruppu/Serverless-GraphQL)
