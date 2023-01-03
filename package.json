@@ -55,7 +55,7 @@
     "jest": "^24.6.0",
     "serverless": "^1.41.1",
     "serverless-dynamodb-local": "^0.2.25",
-    "serverless-jest-plugin": "^0.2.1",
+    "serverless-jest-plugin": "^0.4.0",
     "serverless-offline": "^3.31.3",
     "serverless-plugin-offline-dynamodb-stream": "^1.0.18",
     "serverless-webpack": "^5.2.0",
